@@ -1,0 +1,1547 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>REMA Revision Sheet</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap");
+
+      :root {
+        --bg: #0a0a0f;
+        --surface: #111118;
+        --border: #1e1e2e;
+        --accent: #00ff88;
+        --accent2: #ff6b35;
+        --accent3: #4fc3f7;
+        --accent4: #ffd166;
+        --text: #e0e0e0;
+        --muted: #666680;
+        --m2: #4fc3f7;
+        --m3: #ffd166;
+        --m4: #ff6b35;
+        --m5: #c084fc;
+        --m6: #34d399;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px;
+        line-height: 1.6;
+        padding: 24px;
+      }
+
+      .header {
+        border-bottom: 2px solid var(--accent);
+        padding-bottom: 16px;
+        margin-bottom: 32px;
+      }
+
+      .header h1 {
+        font-family: "Syne", sans-serif;
+        font-size: 28px;
+        font-weight: 800;
+        color: var(--accent);
+        letter-spacing: -0.5px;
+      }
+
+      .header p {
+        color: var(--muted);
+        font-size: 12px;
+        margin-top: 4px;
+      }
+
+      .strategy-box {
+        background: #0f1a14;
+        border: 1px solid var(--accent);
+        border-left: 4px solid var(--accent);
+        padding: 16px;
+        margin-bottom: 32px;
+        border-radius: 4px;
+      }
+
+      .strategy-box h3 {
+        color: var(--accent);
+        font-family: "Syne", sans-serif;
+        margin-bottom: 8px;
+      }
+
+      .strategy-box .row {
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
+        margin-top: 8px;
+      }
+
+      .strategy-box .pill {
+        padding: 4px 12px;
+        border-radius: 999px;
+        font-size: 11px;
+        font-weight: 700;
+      }
+
+      .mod-section {
+        margin-bottom: 40px;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        overflow: hidden;
+      }
+
+      .mod-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 20px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .mod-badge {
+        font-family: "Syne", sans-serif;
+        font-size: 18px;
+        font-weight: 800;
+        padding: 4px 12px;
+        border-radius: 4px;
+        color: #000;
+      }
+
+      .mod-title {
+        font-family: "Syne", sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+      }
+
+      .mod-tags {
+        margin-left: auto;
+        display: flex;
+        gap: 6px;
+      }
+
+      .tag {
+        font-size: 10px;
+        padding: 2px 8px;
+        border-radius: 999px;
+        border: 1px solid;
+        font-weight: 700;
+      }
+
+      .mod-body {
+        padding: 20px;
+        display: grid;
+        gap: 20px;
+      }
+
+      .section-block {
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        overflow: hidden;
+      }
+
+      .section-label {
+        padding: 6px 14px;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .mark-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        display: inline-block;
+      }
+
+      .section-content {
+        padding: 14px;
+      }
+
+      .def-grid {
+        display: grid;
+        gap: 8px;
+      }
+
+      .def-item {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 10px;
+        padding: 8px 10px;
+        background: var(--surface);
+        border-radius: 3px;
+        border-left: 3px solid var(--border);
+      }
+
+      .def-term {
+        font-weight: 700;
+        color: var(--text);
+        white-space: nowrap;
+        min-width: 180px;
+      }
+
+      .def-val {
+        color: #aaa;
+      }
+
+      .topic-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 14px;
+        margin-bottom: 12px;
+      }
+
+      .topic-card:last-child {
+        margin-bottom: 0;
+      }
+
+      .topic-title {
+        font-family: "Syne", sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .star {
+        color: var(--accent4);
+      }
+
+      .four-points {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+
+      .point {
+        padding: 8px 10px;
+        border-radius: 3px;
+        font-size: 12px;
+      }
+
+      .point-label {
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 3px;
+        opacity: 0.7;
+      }
+
+      .p-what {
+        background: #0d1117;
+        border-left: 3px solid #4fc3f7;
+      }
+      .p-how {
+        background: #0d1117;
+        border-left: 3px solid #ffd166;
+      }
+      .p-why {
+        background: #0d1117;
+        border-left: 3px solid #ff6b35;
+      }
+      .p-example {
+        background: #0d1117;
+        border-left: 3px solid #00ff88;
+      }
+
+      .bullets {
+        list-style: none;
+        display: grid;
+        gap: 5px;
+      }
+
+      .bullets li::before {
+        content: "→ ";
+        color: var(--accent);
+        font-weight: 700;
+      }
+
+      .five-block {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 12px 14px;
+        margin-bottom: 10px;
+      }
+
+      .five-block:last-child {
+        margin-bottom: 0;
+      }
+
+      .five-title {
+        font-weight: 700;
+        margin-bottom: 8px;
+        color: var(--text);
+        font-size: 12px;
+      }
+
+      .compare-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 11px;
+        margin-top: 6px;
+      }
+
+      .compare-table th {
+        background: #1a1a2e;
+        padding: 6px 10px;
+        text-align: left;
+        font-weight: 700;
+        color: var(--muted);
+        border: 1px solid var(--border);
+      }
+
+      .compare-table td {
+        padding: 5px 10px;
+        border: 1px solid var(--border);
+        color: #aaa;
+      }
+
+      .compare-table tr:nth-child(even) td {
+        background: var(--surface);
+      }
+
+      .divider {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 12px 0;
+      }
+
+      /* mod colors */
+      .c2 {
+        background: var(--m2);
+      }
+      .c3 {
+        background: var(--m3);
+      }
+      .c4 {
+        background: var(--m4);
+      }
+      .c5 {
+        background: var(--m5);
+      }
+      .c6 {
+        background: var(--m6);
+      }
+
+      .t2 {
+        color: var(--m2);
+        border-color: var(--m2);
+      }
+      .t3 {
+        color: var(--m3);
+        border-color: var(--m3);
+      }
+      .t4 {
+        color: var(--m4);
+        border-color: var(--m4);
+      }
+      .t5 {
+        color: var(--m5);
+        border-color: var(--m5);
+      }
+      .t6 {
+        color: var(--m6);
+        border-color: var(--m6);
+      }
+
+      .border2 {
+        border-color: var(--m2) !important;
+      }
+      .border3 {
+        border-color: var(--m3) !important;
+      }
+      .border4 {
+        border-color: var(--m4) !important;
+      }
+      .border5 {
+        border-color: var(--m5) !important;
+      }
+      .border6 {
+        border-color: var(--m6) !important;
+      }
+
+      @media print {
+        body {
+          background: white;
+          color: black;
+          font-size: 11px;
+        }
+        .mod-section {
+          page-break-inside: avoid;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>REMA — FINAL REVISION SHEET</h1>
+      <p>
+        Reverse Engineering & Malware Analysis · Read once tonight, once
+        tomorrow morning · Paper: 2 PM
+      </p>
+    </div>
+
+    <div class="strategy-box">
+      <h3>⚡ EXAM STRATEGY</h3>
+      <div style="color: #aaa; margin-top: 6px; line-height: 1.8">
+        <strong style="color: var(--accent)">Section 1 (2M × 5)</strong> — One
+        per mod, all definitions below. Target 8–10 marks.<br />
+        <strong style="color: var(--accent2)">Section 2 (5M × 4)</strong> — Pick
+        easiest 4 on the day. All skeletons below.<br />
+        <strong style="color: var(--accent3)">Section 3 (10M × 3)</strong> —
+        Answer from <strong style="color: var(--m2)">Mod 2</strong>,
+        <strong style="color: var(--m4)">Mod 4</strong>,
+        <strong style="color: var(--m5)">Mod 5</strong> only. Full skeletons
+        below.
+      </div>
+      <div class="row" style="margin-top: 12px">
+        <span class="pill" style="background: var(--m2); color: #000"
+          >MOD 2 — FULL DEPTH</span
+        >
+        <span class="pill" style="background: var(--m4); color: #000"
+          >MOD 4 — FULL DEPTH</span
+        >
+        <span class="pill" style="background: var(--m5); color: #000"
+          >MOD 5 — FULL DEPTH</span
+        >
+        <span class="pill" style="background: var(--m3); color: #000"
+          >MOD 3 — DEFS + 5M</span
+        >
+        <span class="pill" style="background: var(--m6); color: #000"
+          >MOD 6 — DEFS ONLY</span
+        >
+      </div>
+    </div>
+
+    <!-- ==================== MOD 2 ==================== -->
+    <div class="mod-section" style="border-color: var(--m2)">
+      <div class="mod-header" style="background: #050d14">
+        <span class="mod-badge c2">MOD 2</span>
+        <span class="mod-title" style="color: var(--m2)"
+          >Reversing Malicious Code — x86, Assembly, Windows API</span
+        >
+        <div class="mod-tags">
+          <span class="tag t2">2M</span>
+          <span class="tag t2">5M</span>
+          <span class="tag t2">10M ✓</span>
+        </div>
+      </div>
+      <div class="mod-body">
+        <!-- 2M -->
+        <div class="section-block border2">
+          <div class="section-label">
+            <span class="mark-dot" style="background: var(--m2)"></span>2 MARK
+            DEFINITIONS
+          </div>
+          <div class="section-content">
+            <div class="def-grid">
+              <div class="def-item" style="border-color: var(--m2)">
+                <span class="def-term">Microcode vs Machine Code</span
+                ><span class="def-val"
+                  >Microcode = low-level CPU internal instructions controlling
+                  hardware. Machine code = binary instructions CPU executes
+                  directly. Microcode sits below machine code in
+                  abstraction.</span
+                >
+              </div>
+              <div class="def-item" style="border-color: var(--m2)">
+                <span class="def-term">Low-Level Languages</span
+                ><span class="def-val"
+                  >Close to hardware, minimal abstraction, eg. Assembly. Fast
+                  execution but hardware-dependent and hard to write.</span
+                >
+              </div>
+              <div class="def-item" style="border-color: var(--m2)">
+                <span class="def-term">High-Level Languages</span
+                ><span class="def-val"
+                  >Human-readable, portable, abstracted from hardware. eg.
+                  Python, C. Easier to write but slower than low-level.</span
+                >
+              </div>
+              <div class="def-item" style="border-color: var(--m2)">
+                <span class="def-term">Interpreted Languages</span
+                ><span class="def-val"
+                  >Executed line-by-line by interpreter at runtime. eg. Python,
+                  JS. Flexible but slower than compiled.</span
+                >
+              </div>
+              <div class="def-item" style="border-color: var(--m2)">
+                <span class="def-term">Disassembling + Control Flow</span
+                ><span class="def-val"
+                  >Disassembler converts binary → assembly. Control flow
+                  identified via JMP/JNE/JE for conditionals, backward jumps for
+                  loops, CALL for functions.</span
+                >
+              </div>
+              <div class="def-item" style="border-color: var(--m2)">
+                <span class="def-term">Keylogging</span
+                ><span class="def-val"
+                  >Records keystrokes via API hooks (SetWindowsHookEx). Detected
+                  by monitoring suspicious API calls during dynamic
+                  analysis.</span
+                >
+              </div>
+              <div class="def-item" style="border-color: var(--m2)">
+                <span class="def-term">Data Exfiltration</span
+                ><span class="def-val"
+                  >Unauthorized extraction of data using HTTP POST, DNS
+                  tunneling, or encrypted C2 channels.</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5M -->
+        <div class="section-block border2">
+          <div class="section-label">
+            <span class="mark-dot" style="background: var(--m2)"></span>5 MARK
+            SKELETONS
+          </div>
+          <div class="section-content">
+            <div class="five-block">
+              <div class="five-title">Q32 — x86 Registers</div>
+              <ul class="bullets">
+                <li>
+                  General purpose: EAX (accumulator), EBX (base), ECX (counter),
+                  EDX (data)
+                </li>
+                <li>
+                  ESP = stack pointer, EBP = base pointer — critical for stack
+                  frame analysis
+                </li>
+                <li>
+                  EIP = instruction pointer, always points to next instruction
+                  to execute
+                </li>
+                <li>
+                  Flags: ZF (zero), CF (carry), SF (sign) — control all
+                  conditional jumps
+                </li>
+                <li>Malware manipulates EIP to hijack execution flow</li>
+              </ul>
+            </div>
+            <div class="five-block">
+              <div class="five-title">Q35 — Registry Manipulation</div>
+              <ul class="bullets">
+                <li>
+                  Malware uses HKCU\...\CurrentVersion\Run for persistence
+                  across reboots
+                </li>
+                <li>Stores C2 config, encryption keys in registry values</li>
+                <li>Deletes keys post-execution to erase tracks</li>
+                <li>Detected via RegCreateKey, RegSetValueEx API monitoring</li>
+                <li>
+                  Example: Zeus, most RATs and ransomware use registry for
+                  persistence
+                </li>
+              </ul>
+            </div>
+            <div class="five-block">
+              <div class="five-title">Q36 — Trace Execution Flow</div>
+              <ul class="bullets">
+                <li>
+                  Analyst follows conditional branches and function calls using
+                  disassembler
+                </li>
+                <li>
+                  Control Flow Graph (CFG) visualizes all possible execution
+                  paths
+                </li>
+                <li>Key instructions: JMP, CALL, RET, CMP, JNE/JE</li>
+                <li>
+                  Debugger used to step through live execution and observe
+                  register values
+                </li>
+                <li>
+                  Goal: find decision point where malicious action triggers
+                </li>
+              </ul>
+            </div>
+            <div class="five-block">
+              <div class="five-title">Q31 — Levels of Abstraction</div>
+              <ul class="bullets">
+                <li>
+                  Hardware → Microarchitecture → Machine Code → Assembly →
+                  High-Level → Application
+                </li>
+                <li>Analysts work at assembly and machine code level</li>
+                <li>
+                  Higher levels hide malicious intent, lower levels reveal
+                  actual behavior
+                </li>
+                <li>
+                  RE works bottom-up: binary → assembly → logic understanding
+                </li>
+                <li>
+                  Malware authors use high-level code, analysts must reverse to
+                  low-level
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10M -->
+        <div class="section-block border2">
+          <div class="section-label">
+            <span class="mark-dot" style="background: var(--m2)"></span>10 MARK
+            SKELETONS — PICK ONE IN EXAM
+          </div>
+          <div class="section-content">
+            <div class="topic-card">
+              <div class="topic-title">
+                <span class="star">★</span> Q42 — Heap and Stack
+                <span style="color: var(--m2); font-size: 10px"
+                  >(MOST LIKELY)</span
+                >
+              </div>
+              <div class="four-points">
+                <div class="point p-what">
+                  <div class="point-label">WHAT</div>
+                  Stack = LIFO memory for function calls, local vars, return
+                  addresses. Heap = dynamic memory allocated at runtime via
+                  malloc/VirtualAlloc.
+                </div>
+                <div class="point p-how">
+                  <div class="point-label">HOW</div>
+                  Stack: function called → frame created → EBP saved → locals
+                  pushed → RET destroys frame. Heap: malware calls VirtualAlloc
+                  → writes shellcode → executes from heap.
+                </div>
+                <div class="point p-why">
+                  <div class="point-label">WHY IT MATTERS</div>
+                  Buffer overflow targets stack to overwrite return address and
+                  redirect EIP. Heap spraying fills heap with shellcode to
+                  increase exploit hit rate. Both = code execution.
+                </div>
+                <div class="point p-example">
+                  <div class="point-label">EXAMPLE</div>
+                  Classic stack overflow exploits (CVE patterns), heap spray
+                  attacks in IE browser exploits. Cobalt Strike uses heap
+                  injection to hide shellcode.
+                </div>
+              </div>
+            </div>
+
+            <div class="topic-card">
+              <div class="topic-title">
+                <span class="star">★</span> Q40 — Windows API Level Analysis
+                <span style="color: var(--m2); font-size: 10px"
+                  >(VERY LIKELY)</span
+                >
+              </div>
+              <div class="four-points">
+                <div class="point p-what">
+                  <div class="point-label">WHAT</div>
+                  Malware communicates with OS through Windows API. Analysts
+                  identify behavior by spotting suspicious API call patterns
+                  during static/dynamic analysis.
+                </div>
+                <div class="point p-how">
+                  <div class="point-label">HOW — KEY API CHAINS</div>
+                  File ops: CreateFile/WriteFile/DeleteFile. Registry:
+                  RegCreateKey/RegSetValue. Injection: OpenProcess →
+                  VirtualAllocEx → WriteProcessMemory → CreateRemoteThread.
+                  Network: InternetOpen/HttpSendRequest. Anti-debug:
+                  IsDebuggerPresent.
+                </div>
+                <div class="point p-why">
+                  <div class="point-label">WHY</div>
+                  Each API chain reveals capability: injection chain = process
+                  injection, network APIs = C2 comms, file APIs = ransomware
+                  encryption, registry APIs = persistence. No need to understand
+                  full code.
+                </div>
+                <div class="point p-example">
+                  <div class="point-label">EXAMPLE</div>
+                  Zeus banking trojan identified entirely through API call
+                  pattern. WannaCry's file encryption chain visible via
+                  CreateFile+CryptEncrypt API sequence.
+                </div>
+              </div>
+            </div>
+
+            <div class="topic-card">
+              <div class="topic-title">
+                <span class="star">★</span> Q38 — Assembly Logic Structures
+              </div>
+              <div class="four-points">
+                <div class="point p-what">
+                  <div class="point-label">WHAT</div>
+                  Disassembler converts binary to assembly. Analyst identifies
+                  high-level logic constructs like if-else, loops, switch cases,
+                  and function calls from raw assembly instructions.
+                </div>
+                <div class="point p-how">
+                  <div class="point-label">HOW — EACH CONSTRUCT</div>
+                  If-else: CMP + JE/JNE. Loops: backward JMP, ECX counter, LOOP
+                  instruction. Switch: jump tables (array of addresses).
+                  Functions: CALL pushes return addr, RET pops it. Frame: PUSH
+                  EBP / MOV EBP,ESP prologue → POP EBP / RET epilogue.
+                </div>
+                <div class="point p-why">
+                  <div class="point-label">WHY</div>
+                  Recognizing constructs lets analyst understand malware
+                  decision logic without source code. Find anti-debug checks,
+                  decryption loops, C2 connection attempts hidden in binary.
+                </div>
+                <div class="point p-example">
+                  <div class="point-label">EXAMPLE</div>
+                  Anti-debug loop = ECX initialized to 1000, backward JMP
+                  creates loop checking IsDebuggerPresent 1000 times before
+                  payload runs.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== MOD 3 ==================== -->
+    <div class="mod-section" style="border-color: var(--m3)">
+      <div class="mod-header" style="background: #14120a">
+        <span class="mod-badge c3" style="color: #000">MOD 3</span>
+        <span class="mod-title" style="color: var(--m3)"
+          >Malicious Web & Document Files — PDF, RTF, JS, Office</span
+        >
+        <div class="mod-tags">
+          <span class="tag t3">2M</span>
+          <span class="tag t3">5M</span>
+        </div>
+      </div>
+      <div class="mod-body">
+        <div class="section-block border3">
+          <div class="section-label">
+            <span class="mark-dot" style="background: var(--m3)"></span>2 MARK
+            DEFINITIONS
+          </div>
+          <div class="section-content">
+            <div class="def-grid">
+              <div class="def-item" style="border-color: var(--m3)">
+                <span class="def-term">Scanning PDFs for Malware</span
+                ><span class="def-val"
+                  >Automated tools check embedded JS, exploit payloads,
+                  suspicious streams using signature detection +
+                  sandboxing.</span
+                >
+              </div>
+              <div class="def-item" style="border-color: var(--m3)">
+                <span class="def-term">RTF Format</span
+                ><span class="def-val"
+                  >Rich Text Format — uses control words and groups, can embed
+                  OLE objects, commonly abused via malformed control words to
+                  deliver exploits.</span
+                >
+              </div>
+              <div class="def-item" style="border-color: var(--m3)">
+                <span class="def-term">SRP</span
+                ><span class="def-val"
+                  >Software Restriction Policies — Windows mechanism to block
+                  unauthorized program execution based on hash, path, or
+                  certificate rules.</span
+                >
+              </div>
+              <div class="def-item" style="border-color: var(--m3)">
+                <span class="def-term">Code Minifiers</span
+                ><span class="def-val"
+                  >Tools that remove whitespace/comments to reduce file size and
+                  improve performance. NOT obfuscation — doesn't change logic,
+                  just compresses.</span
+                >
+              </div>
+              <div class="def-item" style="border-color: var(--m3)">
+                <span class="def-term">Control Words in RTF</span
+                ><span class="def-val"
+                  >Backslash keywords controlling formatting eg. \rtf1. Can be
+                  abused to embed malicious OLE objects or trigger
+                  exploits.</span
+                >
+              </div>
+              <div class="def-item" style="border-color: var(--m3)">
+                <span class="def-term">OOXML</span
+                ><span class="def-val"
+                  >Office Open XML — MS Office format that is a ZIP containing
+                  XML files. Macros stored in vbaProject.bin. Can hide malicious
+                  macros inside.</span
+                >
+              </div>
+              <div class="def-item" style="border-color: var(--m3)">
+                <span class="def-term">Obfuscation Purpose</span
+                ><span class="def-val"
+                  >Hides actual code logic from analysts and AV tools by making
+                  it unreadable while keeping full functionality intact.</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-block border3">
+          <div class="section-label">
+            <span class="mark-dot" style="background: var(--m3)"></span>5 MARK
+            SKELETONS
+          </div>
+          <div class="section-content">
+            <div class="five-block">
+              <div class="five-title">Q52 — JS Obfuscation Techniques</div>
+              <ul class="bullets">
+                <li>
+                  String encoding: strings converted to hex/unicode to hide C2
+                  URLs
+                </li>
+                <li>
+                  Variable renaming: meaningful names replaced with random
+                  characters
+                </li>
+                <li>
+                  Control flow flattening: normal flow replaced with complex
+                  switch statements
+                </li>
+                <li>
+                  Dead code insertion: fake irrelevant code added to confuse
+                  analyst
+                </li>
+                <li>
+                  Dynamic evaluation: eval() used to execute encoded strings at
+                  runtime
+                </li>
+                <li>
+                  Target: hide C2 URLs, malicious API calls, payload delivery
+                  logic
+                </li>
+              </ul>
+            </div>
+            <div class="five-block">
+              <div class="five-title">Q56 — How PDF Delivers Malware</div>
+              <ul class="bullets">
+                <li>
+                  Embedded JavaScript executes on open via PDF reader
+                  vulnerability
+                </li>
+                <li>
+                  Malicious hyperlinks redirect to exploit kit landing pages
+                </li>
+                <li>
+                  Exploit payloads target buffer overflows in PDF reader (Adobe,
+                  Foxit)
+                </li>
+                <li>
+                  Social engineering tricks user into opening attachment or
+                  enabling content
+                </li>
+                <li>Streams contain obfuscated shellcode decoded at runtime</li>
+                <li>
+                  Example: CVE-2010-0188 Adobe Reader exploit, Zbot delivered
+                  via PDF
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== MOD 4 ==================== -->
+    <div class="mod-section" style="border-color: var(--m4)">
+      <div class="mod-header" style="background: #140a05">
+        <span class="mod-badge c4" style="color: #000">MOD 4</span>
+        <span class="mod-title" style="color: var(--m4)"
+          >In-Depth Malware Analysis — Packing, Fileless, Injection,
+          Memory</span
+        >
+        <div class="mod-tags">
+          <span class="tag t4">2M</span>
+          <span class="tag t4">5M</span>
+          <span class="tag t4">10M ✓</span>
+        </div>
+      </div>
+      <div class="mod-body">
+        <div class="section-block border4">
+          <div class="section-label">
+            <span class="mark-dot" style="background: var(--m4)"></span>2 MARK
+            DEFINITIONS
+          </div>
+          <div class="section-content">
+            <div class="def-grid">
+              <div class="def-item" style="border-color: var(--m4)">
+                <span class="def-term">Packed Malware</span
+                ><span class="def-val"
+                  >Malware compressed/encrypted to hide code and evade AV
+                  signature detection. Unpacks itself at runtime in
+                  memory.</span
+                >
+              </div>
+              <div class="def-item" style="border-color: var(--m4)">
+                <span class="def-term">Elements of Packed Malware</span
+                ><span class="def-val"
+                  >Packer tool + encrypted payload + stub (decompression
+                  routine) + execution transfer mechanism.</span
+                >
+              </div>
+              <div class="def-item" style="border-color: var(--m4)">
+                <span class="def-term">Why Packing</span
+                ><span class="def-val"
+                  >Bypass signature AV, complicate reverse engineering, hide
+                  strings/imports, reduce detectable footprint.</span
+                >
+              </div>
+              <div class="def-item" style="border-color: var(--m4)">
+                <span class="def-term">Packed vs Normal Malware</span
+                ><span class="def-val"
+                  >Packed = high entropy sections, few readable strings,
+                  abnormal PE entry point, obfuscated imports. Normal = readable
+                  strings, standard structure.</span
+                >
+              </div>
+              <div class="def-item" style="border-color: var(--m4)">
+                <span class="def-term">Packing vs Unpacking</span
+                ><span class="def-val"
+                  >Packing = attacker hides code. Unpacking = analyst reveals
+                  hidden payload via dynamic debugging or memory dumping.</span
+                >
+              </div>
+              <div class="def-item" style="border-color: var(--m4)">
+                <span class="def-term">Detect Packed Malware</span
+                ><span class="def-val"
+                  >Entropy analysis, PE header inspection, import table
+                  anomalies, signature detection, behavioral monitoring.</span
+                >
+              </div>
+              <div class="def-item" style="border-color: var(--m4)">
+                <span class="def-term">Analyze Packed Malware</span
+                ><span class="def-val"
+                  >Static analysis → dynamic debugging → memory dump at OEP
+                  (Original Entry Point) → unpacking tools (UPX,
+                  OllyDump).</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-block border4">
+          <div class="section-label">
+            <span class="mark-dot" style="background: var(--m4)"></span>5 MARK
+            SKELETONS
+          </div>
+          <div class="section-content">
+            <div class="five-block">
+              <div class="five-title">Q8 — How Packed Malware Looks</div>
+              <ul class="bullets">
+                <li>
+                  High entropy sections (close to 8.0) due to
+                  encryption/compression
+                </li>
+                <li>
+                  Abnormal file size — smaller than expected for apparent
+                  functionality
+                </li>
+                <li>Suspicious entry point — jumps to non-standard section</li>
+                <li>
+                  Very few readable strings — most content is
+                  encrypted/compressed
+                </li>
+                <li>
+                  Obfuscated or missing import table — hides API calls from
+                  static analysis
+                </li>
+              </ul>
+            </div>
+            <div class="five-block">
+              <div class="five-title">Q12 — Code Injection</div>
+              <ul class="bullets">
+                <li>
+                  Attacker injects malicious code into a legitimate running
+                  process
+                </li>
+                <li>
+                  Injected code executes with the privileges of the host process
+                </li>
+                <li>
+                  Types: DLL injection, shellcode injection, reflective loading
+                </li>
+                <li>
+                  Evades process-based AV since malicious code runs under
+                  trusted PID
+                </li>
+                <li>
+                  Detected via memory scanning for injected regions with RWX
+                  permissions
+                </li>
+              </ul>
+            </div>
+            <div class="five-block">
+              <div class="five-title">Q14 — On-Disk vs In-Memory Attacks</div>
+              <table class="compare-table">
+                <tr>
+                  <th>Factor</th>
+                  <th>On-Disk</th>
+                  <th>In-Memory</th>
+                </tr>
+                <tr>
+                  <td>Storage</td>
+                  <td>Written to filesystem</td>
+                  <td>RAM only, no file</td>
+                </tr>
+                <tr>
+                  <td>Detection</td>
+                  <td>AV can scan files</td>
+                  <td>Harder, needs memory scan</td>
+                </tr>
+                <tr>
+                  <td>Persistence</td>
+                  <td>Survives reboot</td>
+                  <td>Lost on reboot</td>
+                </tr>
+                <tr>
+                  <td>Forensics</td>
+                  <td>File artifacts remain</td>
+                  <td>Volatile, hard to recover</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-block border4">
+          <div class="section-label">
+            <span class="mark-dot" style="background: var(--m4)"></span>10 MARK
+            SKELETONS
+          </div>
+          <div class="section-content">
+            <div class="topic-card">
+              <div class="topic-title">
+                <span class="star">★</span> Q15 — What is Packing and Why
+                <span style="color: var(--m4); font-size: 10px"
+                  >(MOST LIKELY)</span
+                >
+              </div>
+              <div class="four-points">
+                <div class="point p-what">
+                  <div class="point-label">WHAT</div>
+                  Packing = compressing or encrypting a malware executable using
+                  a packer tool to produce a new binary that unpacks itself at
+                  runtime. The visible binary hides the real payload.
+                </div>
+                <div class="point p-how">
+                  <div class="point-label">HOW IT WORKS</div>
+                  Packer wraps original payload → adds stub (decompression
+                  routine) as new entry point → stub decrypts/decompresses
+                  payload into memory at runtime → transfers execution to
+                  Original Entry Point (OEP).
+                </div>
+                <div class="point p-why">
+                  <div class="point-label">WHY ATTACKERS USE IT</div>
+                  Bypass signature-based AV (signature of original malware not
+                  visible), slow down analyst (must unpack before analysis),
+                  hide readable strings/API imports, create unique variants
+                  easily.
+                </div>
+                <div class="point p-example">
+                  <div class="point-label">EXAMPLE + DETECTION</div>
+                  UPX is most common packer. Emotet used custom packers.
+                  Detection: entropy check (high entropy = packed), PE section
+                  analysis, import table inspection, OllyDbg to find OEP via
+                  memory dump.
+                </div>
+              </div>
+            </div>
+
+            <div class="topic-card">
+              <div class="topic-title">
+                <span class="star">★</span> Q17 — Fileless Attack + How It Works
+                <span style="color: var(--m4); font-size: 10px"
+                  >(VERY LIKELY)</span
+                >
+              </div>
+              <div class="four-points">
+                <div class="point p-what">
+                  <div class="point-label">WHAT</div>
+                  Fileless malware never writes to disk. Lives entirely in
+                  memory and uses legitimate system tools (LOLbins) to execute.
+                  No file = no AV signature to detect.
+                </div>
+                <div class="point p-how">
+                  <div class="point-label">STAGES</div>
+                  1. Initial compromise (phishing/exploit) → 2. Script execution
+                  (PowerShell/WMI/macros) → 3. Memory injection (shellcode into
+                  legit process) → 4. Persistence (registry-resident/scheduled
+                  tasks) → 5. Data exfiltration via encrypted channel.
+                </div>
+                <div class="point p-why">
+                  <div class="point-label">WHY DANGEROUS</div>
+                  No file artifact means traditional AV signature matching
+                  fails. Uses trusted Windows tools so behavior-based detection
+                  also struggles. Volatile nature makes forensics hard. Evades
+                  most endpoint security.
+                </div>
+                <div class="point p-example">
+                  <div class="point-label">EXAMPLE</div>
+                  Cobalt Strike — beacon injected into memory via PowerShell.
+                  PowerShell Empire — entirely memory resident. WMI-based
+                  persistence survives reboot without any disk file.
+                </div>
+              </div>
+            </div>
+
+            <div class="topic-card">
+              <div class="topic-title">
+                <span class="star">★</span> Q19 — Detect Fileless + Memory
+                Forensics
+              </div>
+              <div class="four-points">
+                <div class="point p-what">
+                  <div class="point-label">DETECT FILELESS</div>
+                  Behavioral EDR solutions monitor process behavior not just
+                  files. PowerShell Script Block Logging captures all PS
+                  commands. Memory scanning for anomalous RWX regions. AMSI
+                  (Antimalware Scan Interface) intercepts script execution.
+                </div>
+                <div class="point p-how">
+                  <div class="point-label">MEMORY FORENSICS — HOW</div>
+                  Acquire RAM image (live acquisition or hibernation file) →
+                  load into Volatility → extract running processes, network
+                  connections, injected code, registry hives, decrypted strings
+                  all from RAM snapshot.
+                </div>
+                <div class="point p-why">
+                  <div class="point-label">WHY RAM FORENSICS WORKS</div>
+                  Even fileless malware must exist in RAM to execute. Memory
+                  contains decrypted payload, C2 URLs, injected shellcode —
+                  everything attacker tried to hide on disk is visible in RAM.
+                </div>
+                <div class="point p-example">
+                  <div class="point-label">EXAMPLE</div>
+                  Volatility tool used to extract Cobalt Strike beacon config
+                  from memory. malfind plugin detects injected memory regions.
+                  netscan reveals hidden C2 connections not visible in process
+                  list.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== MOD 5 ==================== -->
+    <div class="mod-section" style="border-color: var(--m5)">
+      <div class="mod-header" style="background: #0e0814">
+        <span class="mod-badge c5" style="color: #000">MOD 5</span>
+        <span class="mod-title" style="color: var(--m5)"
+          >Self-Defending Malware — Evasion, Anti-Analysis, Process
+          Hollowing</span
+        >
+        <div class="mod-tags">
+          <span class="tag t5">2M</span>
+          <span class="tag t5">5M</span>
+          <span class="tag t5">10M ✓</span>
+        </div>
+      </div>
+      <div class="mod-body">
+        <div class="section-block border5">
+          <div class="section-label">
+            <span class="mark-dot" style="background: var(--m5)"></span>2 MARK
+            DEFINITIONS
+          </div>
+          <div class="section-content">
+            <div class="def-grid">
+              <div class="def-item" style="border-color: var(--m5)">
+                <span class="def-term">Malware Self-Defense</span
+                ><span class="def-val"
+                  >Techniques malware uses to resist analysis: anti-debugging,
+                  anti-VM detection, code obfuscation, encryption.</span
+                >
+              </div>
+              <div class="def-item" style="border-color: var(--m5)">
+                <span class="def-term">Self-Defending Network</span
+                ><span class="def-val"
+                  >Network that automatically detects, prevents, and responds to
+                  threats using integrated security mechanisms without human
+                  intervention.</span
+                >
+              </div>
+              <div class="def-item" style="border-color: var(--m5)">
+                <span class="def-term">Process Hollowing</span
+                ><span class="def-val"
+                  >Creates a legitimate process in suspended state → hollows out
+                  its memory → writes malicious code → resumes under original
+                  PID. Malware impersonates legit process.</span
+                >
+              </div>
+              <div class="def-item" style="border-color: var(--m5)">
+                <span class="def-term">TLS Callbacks</span
+                ><span class="def-val"
+                  >Thread Local Storage callbacks execute BEFORE the main entry
+                  point. Malware uses these to run anti-debug checks before
+                  analyst's debugger can attach.</span
+                >
+              </div>
+              <div class="def-item" style="border-color: var(--m5)">
+                <span class="def-term">Controlled Environment</span
+                ><span class="def-val"
+                  >Isolated VM or sandbox used to safely execute and observe
+                  malware behavior without risk to production systems.</span
+                >
+              </div>
+              <div class="def-item" style="border-color: var(--m5)">
+                <span class="def-term">Packer Behavior Analysis</span
+                ><span class="def-val"
+                  >Observe unpacking routine, entry point redirection, memory
+                  allocation patterns, and runtime decryption by running packed
+                  sample in debugger.</span
+                >
+              </div>
+              <div class="def-item" style="border-color: var(--m5)">
+                <span class="def-term">Sandbox Evasion Techniques</span
+                ><span class="def-val"
+                  >VM detection, timing attacks, environment checks (user files,
+                  screen resolution), user interaction checks, anti-debugging
+                  methods.</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-block border5">
+          <div class="section-label">
+            <span class="mark-dot" style="background: var(--m5)"></span>5 MARK
+            SKELETONS
+          </div>
+          <div class="section-content">
+            <div class="five-block">
+              <div class="five-title">Q33 — Process Hollowing + Examples</div>
+              <ul class="bullets">
+                <li>
+                  CreateProcess with SUSPENDED flag → legit process created but
+                  not running
+                </li>
+                <li>
+                  NtUnmapViewOfSection hollows out the process memory image
+                </li>
+                <li>
+                  VirtualAllocEx + WriteProcessMemory writes malicious code into
+                  hollow
+                </li>
+                <li>
+                  SetThreadContext redirects entry point, ResumeThread resumes
+                  execution
+                </li>
+                <li>
+                  Result: malicious code runs under trusted PID (eg.
+                  svchost.exe)
+                </li>
+                <li>
+                  Examples: Dridex, TrickBot both impersonated svchost.exe this
+                  way
+                </li>
+              </ul>
+            </div>
+            <div class="five-block">
+              <div class="five-title">
+                Q34 — Sandboxes + Sandbox-Evading Malware
+              </div>
+              <ul class="bullets">
+                <li>
+                  Sandbox = isolated environment to detonate and observe malware
+                  safely
+                </li>
+                <li>
+                  Malware checks for VM artifacts: registry keys, MAC addresses,
+                  screen resolution
+                </li>
+                <li>
+                  Timing attacks: Sleep() for longer than sandbox timeout, then
+                  execute
+                </li>
+                <li>
+                  No user interaction = sandbox (no mouse movement, no recent
+                  documents)
+                </li>
+                <li>
+                  If sandbox detected → malware stays dormant, shows no
+                  malicious behavior
+                </li>
+                <li>
+                  Example: Emotet checked for virtual disk names before
+                  executing
+                </li>
+              </ul>
+            </div>
+            <div class="five-block">
+              <div class="five-title">
+                Q29 — How Self-Defending Networks Work
+              </div>
+              <ul class="bullets">
+                <li>
+                  Continuous real-time monitoring of all network traffic and
+                  endpoints
+                </li>
+                <li>
+                  Automated threat intelligence feed updates detection rules
+                  dynamically
+                </li>
+                <li>
+                  Anomaly detection flags deviations from baseline behavior
+                </li>
+                <li>
+                  Automated response: isolate infected host, block malicious IP,
+                  alert team
+                </li>
+                <li>
+                  Adaptive — learns from new threats and updates its own
+                  defenses
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-block border5">
+          <div class="section-label">
+            <span class="mark-dot" style="background: var(--m5)"></span>10 MARK
+            SKELETONS
+          </div>
+          <div class="section-content">
+            <div class="topic-card">
+              <div class="topic-title">
+                <span class="star">★</span> Q36 — Three Categories of Malware
+                Self-Defense
+                <span style="color: var(--m5); font-size: 10px"
+                  >(MOST LIKELY)</span
+                >
+              </div>
+              <div class="four-points">
+                <div class="point p-what">
+                  <div class="point-label">WHAT</div>
+                  Malware uses three layers of self-defense: Anti-Analysis
+                  (defeat static tools), Anti-Debugging (defeat dynamic
+                  analysis), Anti-Virtualization (defeat sandbox analysis). Each
+                  targets a different analysis phase.
+                </div>
+                <div class="point p-how">
+                  <div class="point-label">HOW EACH WORKS</div>
+                  Anti-analysis: obfuscation, encryption, packing hides code
+                  from static scanners. Anti-debugging: IsDebuggerPresent API,
+                  timing checks (RDTSC), SEH manipulation, TLS callbacks run
+                  before debugger attaches. Anti-VM: checks VM registry keys,
+                  CPUID instruction, MAC address, screen resolution, disk size.
+                </div>
+                <div class="point p-why">
+                  <div class="point-label">WHY IT MATTERS</div>
+                  Each layer forces analyst to spend more time and resources.
+                  Combined they make automated analysis fail completely. Forces
+                  manual expert analysis which is expensive and slow. Buys
+                  attacker time for attack to succeed.
+                </div>
+                <div class="point p-example">
+                  <div class="point-label">EXAMPLE</div>
+                  Emotet used all three layers. Zeus used anti-debug +
+                  encryption. Modern APT malware (Cobalt Strike) uses anti-VM as
+                  first check. Conclusion: layered self-defense is standard in
+                  sophisticated malware today.
+                </div>
+              </div>
+            </div>
+
+            <div class="topic-card">
+              <div class="topic-title">
+                <span class="star">★</span> Q39 — Evasion Techniques in Detail
+                <span style="color: var(--m5); font-size: 10px"
+                  >(VERY LIKELY)</span
+                >
+              </div>
+              <div class="four-points">
+                <div class="point p-what">
+                  <div class="point-label">WHAT</div>
+                  Malware evasion = techniques to avoid detection by security
+                  tools. Operates at signature level (fool AV), behavior level
+                  (look legitimate), and environment level (detect analysis
+                  tools).
+                </div>
+                <div class="point p-how">
+                  <div class="point-label">HOW — KEY TECHNIQUES</div>
+                  Polymorphism: changes code signature every infection cycle,
+                  same function but different bytes. Metamorphism: rewrites
+                  entire code logic, hardest to detect. Encryption: payload
+                  encrypted, only decrypts in memory. Packing: compresses
+                  binary. Behavioral obfuscation: mimics legitimate process
+                  network/file behavior.
+                </div>
+                <div class="point p-why">
+                  <div class="point-label">WHY EACH BEATS SPECIFIC DEFENSE</div>
+                  Polymorphism beats signature AV. Metamorphism beats heuristic
+                  AV. Encryption beats string-based detection. Behavioral
+                  obfuscation beats behavior-based EDR. No single defense
+                  catches all — defense in depth required.
+                </div>
+                <div class="point p-example">
+                  <div class="point-label">EXAMPLE</div>
+                  WannaCry had polymorphic variants in the wild. Virut was
+                  metamorphic. Most modern ransomware encrypts its payload.
+                  Conclusion: attackers layer evasion techniques to defeat
+                  multiple detection layers simultaneously.
+                </div>
+              </div>
+            </div>
+
+            <div class="topic-card">
+              <div class="topic-title">
+                <span class="star">★</span> Q40 — Process Hollowing Risks +
+                Protection
+              </div>
+              <div class="four-points">
+                <div class="point p-what">
+                  <div class="point-label">WHAT</div>
+                  Process hollowing = attacker creates a legitimate suspended
+                  process, replaces its memory with malicious code, resumes it.
+                  Malicious code runs under trusted process identity (PID, name,
+                  path).
+                </div>
+                <div class="point p-how">
+                  <div class="point-label">HOW THE ATTACK WORKS</div>
+                  CreateProcess (SUSPENDED) → NtUnmapViewOfSection (hollows
+                  memory) → VirtualAllocEx (allocates space) →
+                  WriteProcessMemory (writes payload) → SetThreadContext (new
+                  entry point) → ResumeThread (executes).
+                </div>
+                <div class="point p-why">
+                  <div class="point-label">RISKS</div>
+                  Stealth execution — malicious code appears as svchost.exe or
+                  explorer.exe in process list. Privilege abuse — inherits
+                  privileges of hollowed process. Bypasses process-based AV
+                  whitelisting completely.
+                </div>
+                <div class="point p-example">
+                  <div class="point-label">PROTECTION + EXAMPLE</div>
+                  EDR tools monitor CreateProcess+NtUnmapViewOfSection
+                  combination as IoC. Memory integrity checks detect mismatches
+                  between on-disk and in-memory process image. Example: Dridex
+                  banking trojan, TrickBot both used process hollowing against
+                  svchost.exe.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== MOD 6 ==================== -->
+    <div class="mod-section" style="border-color: var(--m6)">
+      <div class="mod-header" style="background: #050f0a">
+        <span class="mod-badge c6" style="color: #000">MOD 6</span>
+        <span class="mod-title" style="color: var(--m6)"
+          >Software Forensics & Incident Response — Definitions Only</span
+        >
+        <div class="mod-tags">
+          <span class="tag t6">2M only</span>
+        </div>
+      </div>
+      <div class="mod-body">
+        <div class="section-block border6">
+          <div class="section-label">
+            <span class="mark-dot" style="background: var(--m6)"></span>2 MARK
+            DEFINITIONS — ALL YOU NEED
+          </div>
+          <div class="section-content">
+            <div class="def-grid">
+              <div class="def-item" style="border-color: var(--m6)">
+                <span class="def-term">Software Forensics</span
+                ><span class="def-val"
+                  >Analyzing software artifacts, code behavior, and execution
+                  traces to investigate security incidents and attribute malware
+                  authorship.</span
+                >
+              </div>
+              <div class="def-item" style="border-color: var(--m6)">
+                <span class="def-term">Incident Response</span
+                ><span class="def-val"
+                  >Structured approach to handle security incidents: Detect →
+                  Analyze → Contain → Eradicate → Recover. Goal = minimize
+                  damage and restore operations.</span
+                >
+              </div>
+              <div class="def-item" style="border-color: var(--m6)">
+                <span class="def-term">Obfuscation</span
+                ><span class="def-val"
+                  >Modifying code structure and logic to conceal functionality
+                  and resist reverse engineering while keeping the code fully
+                  functional.</span
+                >
+              </div>
+              <div class="def-item" style="border-color: var(--m6)">
+                <span class="def-term">Value-Invariant Discovery</span
+                ><span class="def-val"
+                  >Identifies constant relationships and constraints among
+                  program variables during execution. Used to detect bugs and
+                  malware patterns.</span
+                >
+              </div>
+              <div class="def-item" style="border-color: var(--m6)">
+                <span class="def-term">Crash Dump Analysis</span
+                ><span class="def-val"
+                  >Examining memory snapshots captured during program failure to
+                  determine root cause of crash or compromise.</span
+                >
+              </div>
+              <div class="def-item" style="border-color: var(--m6)">
+                <span class="def-term">Error Handling and Logging</span
+                ><span class="def-val"
+                  >Mechanisms that record faults and trace execution issues.
+                  Assists debugging and forensic reconstruction of what happened
+                  before a crash.</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      style="
+        margin-top: 32px;
+        padding: 16px;
+        background: #0f1a14;
+        border: 1px solid var(--accent);
+        border-radius: 4px;
+        text-align: center;
+      "
+    >
+      <div
+        style="
+          color: var(--accent);
+          font-family: &quot;Syne&quot;, sans-serif;
+          font-weight: 800;
+          font-size: 16px;
+          margin-bottom: 6px;
+        "
+      >
+        YOU'RE READY. GOOD LUCK TOMORROW.
+      </div>
+      <div style="color: var(--muted); font-size: 11px">
+        Section 3 → Mod 2 + Mod 4 + Mod 5 &nbsp;|&nbsp; Section 2 → pick easiest
+        4 &nbsp;|&nbsp; Section 1 → one def per mod
+      </div>
+    </div>
+  </body>
+</html>
